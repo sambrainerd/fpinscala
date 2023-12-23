@@ -13,8 +13,14 @@ object MyModule {
     msg.format(x, abs(x))
   }
 
-  def main(args: Array[String]): Unit =
+  private def nonTailRecursiveFactorial(n: Int): Int = {
+    if (n == 0) 1 else n * nonTailRecursiveFactorial(n-1)
+  }
+
+  def main(args: Array[String]): Unit = {
     println(formatAbs(-42))
+    println(s"The factorial of 5 is ${nonTailRecursiveFactorial(5)}")
+  }
 
   // A definition of factorial, using a local, tail recursive function
   def factorial(n: Int): Int = {
@@ -36,7 +42,8 @@ object MyModule {
 
   // Exercise 1: Write a function to compute the nth fibonacci number
 
-  def fib(n: Int): Int = ???
+  //def fib(n: Int): Int = {
+  //}
 
   // This definition and `formatAbs` are very similar..
   private def formatFactorial(n: Int) = {
@@ -71,7 +78,7 @@ object TestFib {
   // test implementation of `fib`
   def main(args: Array[String]): Unit = {
     println("Expected: 0, 1, 1, 2, 3, 5, 8")
-    println("Actual:   %d, %d, %d, %d, %d, %d, %d".format(fib(0), fib(1), fib(2), fib(3), fib(4), fib(5), fib(6)))
+    //println("Actual:   %d, %d, %d, %d, %d, %d, %d".format(fib(0), fib(1), fib(2), fib(3), fib(4), fib(5), fib(6)))
   }
 }
 
